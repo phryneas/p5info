@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/chinhodado/persona5_calculator.git
+	branch = master
+	commit = c76032b4eec5986ff68b19ea82df54ccb5c1a309
+	parent = none
+	cmdver = 0.3.1
