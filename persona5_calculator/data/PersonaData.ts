@@ -1,10 +1,10 @@
 // derived partly from https://github.com/aqiu384/aqiu384.github.io/blob/master/p5-tool/js/full_compendium.js
 
-interface PersonaMap {
+export interface PersonaMap {
     [index: string]: PersonaData;
 }
 
-interface PersonaData {
+export interface PersonaData {
     name?: string; // only for when converted to list
     arcana: string;
     level: number;
@@ -51,7 +51,7 @@ interface PersonaData {
     curseValue?: number;
 }
 
-const personaMap : PersonaMap = {
+export const personaMap : PersonaMap = {
     "Abaddon": {
         "arcana": "Judgement",
         "level": 74,

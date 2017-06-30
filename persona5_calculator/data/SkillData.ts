@@ -1,10 +1,10 @@
 // from https://github.com/aqiu384/aqiu384.github.io/blob/master/p5-tool/js/full_skills.js
 
-interface SkillMap {
+export interface SkillMap {
     [index: string]: SkillData;
 }
 
-interface SkillData {
+export interface SkillData {
     name?: string;
     cost?: number;
     effect: string;
@@ -27,7 +27,7 @@ interface SkillData {
     fuseDisplay?: string;
 }
 
-const skillMap: SkillMap = {
+export const skillMap: SkillMap = {
     "Absorb Bless": {
         "effect": "Absorb Bless attacks.",
         "element": "passive",
