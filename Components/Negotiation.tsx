@@ -18,7 +18,7 @@ const NegotiationRow =
 
 export class Negotiation extends React.Component<NavigationScreenProps<Props>> {
     static navigationOptions = {
-        title: 'Persona List',
+        title: 'Negotiation',
     };
 
 
