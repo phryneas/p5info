@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {PersonaDetails} from './Components/PersonaDetails';
-import {PersonaList} from './Components/PersonaList';
+import {PersonaByName, PersonaByLevel, PersonaByArcana} from './Components/PersonaList';
 import {Negotiation} from './Components/Negotiation';
 import {TabNavigator, StackNavigator, DrawerNavigator, NavigationScreenProps} from 'react-navigation';
 import {allPersona} from './Data';
@@ -13,15 +13,15 @@ import {allPersona} from './Data';
 
 const personaTabs = TabNavigator({
     PersonaByAlphabet: {
-        screen: (props: NavigationScreenProps<{}>) => <PersonaList {...props} sortBy="name"/>,
+        screen: PersonaByName,
         navigationOptions: ({title: "Name"}),
     },
     PersonaByLevel: {
-        screen: (props: NavigationScreenProps<{}>) => <PersonaList {...props} sortBy="level"/>,
+        screen: PersonaByLevel,
         navigationOptions: ({title: "Level"}),
     },
     PersonaByArcana: {
-        screen: (props: NavigationScreenProps<{}>) => <PersonaList {...props} sortBy="level" groupBy="arcana" />,
+        screen: PersonaByArcana,
         navigationOptions: ({title: "Arcana"}),
     },
 }, {
