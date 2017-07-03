@@ -128,7 +128,7 @@ export class PersonaDetails extends React.Component<NavigationScreenProps<Props>
                                     <View key={skillName} style={{flexDirection: 'column'}}>
                                         <View>
                                             <Text>{skillName} ({skill.cost > 0 ? (
-                                                <Text>{skill.cost > 100 ? skill.cost / 100 : skill.cost}{skill.cost > 1000 ? 'MP' : ('%HP')}</Text>) : (
+                                                <Text>{skill.cost >= 100 ? skill.cost / 100 : skill.cost}{skill.cost >= 100 ? 'MP' : ('%HP')}</Text>) : (
                                                 <Text>passive</Text>)})</Text>
                                         </View>
                                         <View>
