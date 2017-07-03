@@ -30,6 +30,7 @@ export class GenericList<T> extends React.Component<Props<T> & NavigationScreenP
         if (groupBy) {
             let data: StringMap<T[]> = {};
             for (let item of Object.values(allItems)) {
+                console.log(item, groupBy);
                 (data[String(item[groupBy])] || (data[String(item[groupBy])] = [])).push(item);
             }
             for (let items of Object.values(data)) {
@@ -37,7 +38,7 @@ export class GenericList<T> extends React.Component<Props<T> & NavigationScreenP
             }
             this.state = {dataSource: ds.cloneWithRowsAndSections(data)};
         } else {
-            let data = Object.values(allPersona);
+            let data = Object.values(allItems);
             data.sort(sortFunc);
             this.state = {dataSource: ds.cloneWithRows(data)};
         }

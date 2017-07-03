@@ -7,7 +7,7 @@ import {allPersona, PersonaData} from "../Data";
 import {GenericList} from "./GenericList";
 
 
-const renderItem = function (this: GenericList<any>, persona: PersonaData) {
+const renderItem = function (this: GenericList<PersonaData>, persona: PersonaData) {
     return <Button
         title={persona.name || 'empty'}
         onPress={() => this.props.navigation.navigate('PersonaDetails', {persona})}

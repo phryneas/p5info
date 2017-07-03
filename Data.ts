@@ -1,5 +1,5 @@
 import {personaMap, PersonaData, skillMap, SkillData} from './persona5_calculator';
-export {PersonaData, PersonaMap} from './persona5_calculator';
+export {PersonaData, PersonaMap, SkillData, SkillMap} from './persona5_calculator';
 
 function getPersona(name: string): PersonaData {
     let persona = personaMap[name];
@@ -29,7 +29,7 @@ function getPersona(name: string): PersonaData {
 function getSkill(name: string): SkillData {
     return {
         name,
-        ...personaMap[name]
+        ...skillMap[name]
     }
 }
 

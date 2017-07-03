@@ -2,14 +2,8 @@ import * as React from 'react';
 import {PersonaDetails} from './Components/PersonaDetails';
 import {PersonaByName, PersonaByLevel, PersonaByArcana} from './Components/PersonaList';
 import {Negotiation} from './Components/Negotiation';
-import {TabNavigator, StackNavigator, DrawerNavigator, NavigationScreenProps} from 'react-navigation';
-import {allPersona} from './Data';
-
-/*
- let idx = Math.floor(Math.random() * Object.keys(allPersona).length);
- let name = Object.keys(allPersona)[idx];
- let persona = allPersona[name];
- */
+import {TabNavigator, StackNavigator, DrawerNavigator} from 'react-navigation';
+import {SkillsByElement, SkillsByName} from "./Components/SkillList";
 
 const personaTabs = TabNavigator({
     PersonaByAlphabet: {
@@ -28,6 +22,19 @@ const personaTabs = TabNavigator({
     initialRouteName: 'PersonaByAlphabet',
 });
 
+const skillTabs = TabNavigator({
+    SkillsByName: {
+        screen: SkillsByName,
+        navigationOptions: ({title: "Skill Name"}),
+    },
+    SkillsByElement: {
+        screen: SkillsByElement,
+        navigationOptions: ({title: "Skill Element"}),
+    },
+}, {
+    initialRouteName: 'SkillsByName',
+});
+
 const personaDrawer = StackNavigator({
     PersonaTabs: {screen: personaTabs},
     PersonaDetails: {screen: PersonaDetails},
@@ -37,6 +44,7 @@ const personaDrawer = StackNavigator({
 });
 
 export default DrawerNavigator({
+    Skills: {screen: skillTabs},
     Persona: {screen: personaDrawer},
     Negotiation: {screen: Negotiation},
 });
