@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Text, View, ScrollView} from 'react-native';
 
-import {PersonaData, skillMap, personaMap} from '../persona5_calculator';
+import {PersonaData, allSkills} from '../Data';
 import {NavigationScreenProps} from "react-navigation";
 
 export interface Props {
@@ -12,31 +12,6 @@ export class PersonaDetails extends React.Component<NavigationScreenProps<Props>
     static navigationOptions = {
         title: 'Persona Details',
     };
-
-    static getPersona(name: string): PersonaData {
-        let persona = personaMap[name];
-        return {
-            name,
-            // Stats
-            strength: persona.stats[0],
-            magic: persona.stats[1],
-            endurance: persona.stats[2],
-            agility: persona.stats[3],
-            luck: persona.stats[4],
-            // Resistances
-            physical: persona.elems[0],
-            gun: persona.elems[1],
-            fire: persona.elems[2],
-            ice: persona.elems[3],
-            electric: persona.elems[4],
-            wind: persona.elems[5],
-            psychic: persona.elems[6],
-            nuclear: persona.elems[7],
-            bless: persona.elems[8],
-            curse: persona.elems[9],
-            ...persona,
-        };
-    }
 
     render() {
         const {persona} = this.props.navigation.state.params as Props;
@@ -123,7 +98,7 @@ export class PersonaDetails extends React.Component<NavigationScreenProps<Props>
                         </View>
                         <View style={{flex: 9}}>
                             {Object.keys(persona.skills).map((skillName) => {
-                                let skill = skillMap[skillName];
+                                let skill = allSkills[skillName];
                                 return (
                                     <View key={skillName} style={{flexDirection: 'column'}}>
                                         <View>

@@ -26,6 +26,7 @@
     "@types/react-native": "^0.44.14",
     "@types/react-navigation": "^1.0.13",
     "@types/react-test-renderer": "^15.5.1",
+    "babel-preset-es2017": "^6.24.1",
     "expo": "^18.0.3",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.45.1",
