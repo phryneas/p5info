@@ -6,7 +6,7 @@
  *
  * Created by Chin on 08-Apr-17.
  */
-class FusionCalculator {
+export class FusionCalculator {
     private personaeByArcana;
 
     constructor(personaeByArcana: {[arcana: string]: PersonaData[]}) {

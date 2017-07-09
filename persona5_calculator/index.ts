@@ -1,3 +1,3 @@
-export {FusionCalculator} from './src/FusionCalculator.ts'
-export {personaMap, PersonaData, PersonaMap} from './data/PersonaData.ts'
-export {skillMap, SkillData, SkillMap} from './data/SkillData.ts'
+export {FusionCalculator} from './src/FusionCalculator'
+export {personaMap, PersonaData, PersonaMap} from './data/PersonaData'
+export {skillMap, SkillData, SkillMap} from './data/SkillData'

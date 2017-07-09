@@ -1,0 +1,3 @@
+rootProject.name = 'de.phryneas.p5info'
+
+include ':app'
