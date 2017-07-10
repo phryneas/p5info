@@ -1,5 +1,9 @@
 import {personaMap, PersonaData, skillMap, SkillData} from '../persona5_calculator';
 
+type PersonaStatIndex = "strength" | "magic" | "endurance" | "agility" | "luck";
+type PersonaResistanceIndex = "physical" | "gun" | "fire" | "ice" | "electric" | "wind" | "psychic" | "nuclear" | "bless" | "curse";
+
+
 function getPersona(name: string): PersonaData {
     let persona = personaMap[name];
     return {
@@ -32,21 +36,20 @@ function getSkill(name: string): SkillData {
     }
 }
 
-export type StringMap<T> = { [key: string]: T };
-export type PersonaMap = StringMap<PersonaData>;
-export type SkillMap = StringMap<SkillData>;
+type StringMap<T> = { [key: string]: T };
+type PersonaMap = StringMap<PersonaData>;
+type SkillMap = StringMap<SkillData>;
 
-export const allPersona: PersonaMap =
+const allPersona: PersonaMap =
     Object.keys(personaMap).reduce((combined: PersonaMap, name: string) => {
         combined[name] = getPersona(name);
         return combined;
     }, {});
 
-export const allSkills: SkillMap =
+const allSkills: SkillMap =
     Object.keys(skillMap).reduce((combined: SkillMap, name: string) => {
         combined[name] = getSkill(name);
         return combined;
     }, {});
-type myPersonaData = PersonaData & StringMap<string>;
-type mySkillData = SkillData & StringMap<string>;
-export {myPersonaData as PersonaData, mySkillData as SkillData};
+
+export {PersonaData, SkillData, PersonaMap, SkillMap, allPersona, allSkills, StringMap, PersonaStatIndex, PersonaResistanceIndex};

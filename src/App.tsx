@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {PersonaDetails} from './Components/PersonaDetails';
+import {SkillDetails} from './Components/SkillDetails';
 import {PersonaByName, PersonaByLevel, PersonaByArcana} from './Components/PersonaList';
 import {Negotiation} from './Components/Negotiation';
 import {TabNavigator, StackNavigator, DrawerNavigator} from 'react-navigation';
@@ -66,7 +67,7 @@ const skillDrawer = StackNavigator({
     SkillTabs: {
         screen: skillTabs,
     },
-//    PersonaDetails: {screen: PersonaDetails},
+    SkillDetails: {screen: SkillDetails},
 }, {
     initialRouteName: 'SkillTabs',
     initialRouteParams: {},

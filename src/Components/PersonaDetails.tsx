@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {Text, View, ScrollView} from 'react-native';
+import {Text, View, ScrollView, TouchableHighlight} from 'react-native';
 
-import {PersonaData, allSkills} from '../Data';
+import {PersonaData, allSkills, PersonaStatIndex, PersonaResistanceIndex} from '../Data';
 import {NavigationScreenProps} from "react-navigation";
 
 export interface Props {
@@ -14,7 +14,7 @@ export class PersonaDetails extends React.Component<NavigationScreenProps<Props>
     });
 
     render() {
-        const {persona} = this.props.navigation.state.params as Props;
+        const {navigate, state: {params: {persona}}} = this.props.navigation;
         return (
             <ScrollView>
                 <View style={{flex: 1, flexDirection: 'column', width: '100%'}}>
@@ -78,7 +78,7 @@ export class PersonaDetails extends React.Component<NavigationScreenProps<Props>
                         </View>
                         <View style={{flex: 9}}>
                             {["Strength", "Magic", "Endurance", "Agility", "Luck"].map((stat) =>
-                                <Text key={stat}>{stat}: {persona[stat.toLowerCase()]}</Text>)}
+                                <Text key={stat}>{stat}: {(persona)[stat.toLowerCase() as PersonaStatIndex]}</Text>)}
                         </View>
                     </View>
 
@@ -88,7 +88,8 @@ export class PersonaDetails extends React.Component<NavigationScreenProps<Props>
                         </View>
                         <View style={{flex: 9}}>
                             {["Physical", "Gun", "Fire", "Ice", "Electric", "Wind", "Psychic", "Nuclear", "Bless", "Curse"].map((resistance) =>
-                                <Text key={resistance}>{resistance}: {persona[resistance.toLowerCase()]}</Text>)}
+                                <Text
+                                    key={resistance}>{resistance}: {persona[resistance.toLowerCase() as PersonaResistanceIndex]}</Text>)}
                         </View>
                     </View>
 
@@ -101,14 +102,28 @@ export class PersonaDetails extends React.Component<NavigationScreenProps<Props>
                                 let skill = allSkills[skillName];
                                 return (
                                     <View key={skillName} style={{flexDirection: 'column'}}>
-                                        <View>
-                                            <Text>{skillName} ({skill.cost || 0 > 0 ? (
-                                                <Text>{skill.cost || 0 >= 100 ? skill.cost || 0 / 100 : skill.cost}{skill.cost || 0 >= 100 ? 'MP' : ('%HP')}</Text>) : (
-                                                <Text>passive</Text>)})</Text>
-                                        </View>
-                                        <View>
-                                            <Text>{skill.effect}</Text>
-                                        </View>
+                                        <TouchableHighlight onPress={() => navigate('SkillDetails', {skill})}>
+                                            <View>
+                                                <View>
+                                                    <Text>
+                                                        <Text
+                                                            style={{
+                                                                textDecorationLine: "underline",
+                                                                color: "blue"
+                                                            }}
+                                                        >
+                                                            {skill.name}
+                                                        </Text>
+                                                        {' '}({(skill.cost || 0) > 0 ? (
+                                                        <Text>{(skill.cost || 0) >= 100 ? (skill.cost || 0) / 100 : skill.cost}{(skill.cost || 0) >= 100 ? 'MP' : ('%HP')}</Text>) : (
+                                                        <Text>passive</Text>)})
+                                                    </Text>
+                                                </View>
+                                                <View>
+                                                    <Text>{skill.effect}</Text>
+                                                </View>
+                                            </View>
+                                        </TouchableHighlight>
                                     </View>);
                             })}
                         </View>

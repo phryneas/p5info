@@ -9,7 +9,7 @@ import {GenericList} from "./GenericList";
 const renderItem = function (this: GenericList<SkillData>, skill: SkillData) {
     return <Button
         title={skill.name || 'empty'}
-        onPress={() => null}
+        onPress={() => this.props.navigation.navigate('SkillDetails', {skill})}
     />;
 };
 const renderHeader = (sectionData: any, name: string) => <Text>{name}</Text>;
