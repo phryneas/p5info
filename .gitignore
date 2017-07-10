@@ -3,3 +3,4 @@ node_modules/
 npm-debug.*
 .idea/
 android/app/build/
+android/.gradle/2.14.1/taskArtifacts

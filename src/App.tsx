@@ -8,48 +8,91 @@ import {SkillsByElement, SkillsByName} from "./Components/SkillList";
 const personaTabs = TabNavigator({
     PersonaByAlphabet: {
         screen: PersonaByName,
-        navigationOptions: ({title: "Name"}),
+        navigationOptions: {
+            title: "by Name",
+            headerTitle: 'Persona by Name',
+        },
     },
     PersonaByLevel: {
         screen: PersonaByLevel,
-        navigationOptions: ({title: "Level"}),
+        navigationOptions: {
+            title: "by Level",
+            headerTitle: 'Persona by Level',
+        },
     },
     PersonaByArcana: {
         screen: PersonaByArcana,
-        navigationOptions: ({title: "Arcana"}),
+        navigationOptions: {
+            title: "by Arcana",
+            headerTitle: 'Persona by Arcana'
+        },
     },
 }, {
     initialRouteName: 'PersonaByAlphabet',
 });
 
+const personaDrawer = StackNavigator({
+    PersonaTabs: {
+        screen: personaTabs,
+    },
+    PersonaDetails: {
+        screen: PersonaDetails,
+    },
+}, {
+    initialRouteName: 'PersonaTabs',
+    initialRouteParams: {},
+});
+
 const skillTabs = TabNavigator({
     SkillsByName: {
         screen: SkillsByName,
-        navigationOptions: ({title: "Skill Name"}),
+        navigationOptions: {
+            title: "by Name",
+            headerTitle: 'Skills by Name',
+        },
     },
     SkillsByElement: {
         screen: SkillsByElement,
-        navigationOptions: ({title: "Skill Element"}),
+        navigationOptions: {
+            title: "by Element",
+            headerTitle: 'Skills by Element',
+        },
     },
 }, {
     initialRouteName: 'SkillsByName',
 });
 
-const personaDrawer = StackNavigator({
-    PersonaTabs: {screen: personaTabs},
-    PersonaDetails: {screen: PersonaDetails},
+const skillDrawer = StackNavigator({
+    SkillTabs: {
+        screen: skillTabs,
+    },
+//    PersonaDetails: {screen: PersonaDetails},
 }, {
-    initialRouteName: 'PersonaTabs',
-    initialRouteParams: {}
+    initialRouteName: 'SkillTabs',
+    initialRouteParams: {},
+});
+
+const negotiationDrawer = StackNavigator({
+    Negotiation: {
+        screen: Negotiation,
+        navigationOptions: {
+            title: "Negotiation",
+            headerTitle: "Negotiation"
+        },
+    },
 });
 
 export default DrawerNavigator({
-    Skills: {screen: skillTabs},
-    Persona: {screen: personaDrawer},
-    Negotiation: {screen: Negotiation},
+    Skills: {
+        screen: skillDrawer,
+        navigationOptions: {title: "Skills"},
+    },
+    Persona: {
+        screen: personaDrawer,
+        navigationOptions: {title: "Persona"},
+    },
+    Negotiation: {
+        screen: negotiationDrawer,
+        navigationOptions: {title: "Negotiation"},
+    },
 });
-
-
-
-
-

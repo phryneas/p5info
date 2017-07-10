@@ -1,5 +1,4 @@
 import {personaMap, PersonaData, skillMap, SkillData} from '../persona5_calculator';
-export {PersonaData, SkillData} from '../persona5_calculator';
 
 function getPersona(name: string): PersonaData {
     let persona = personaMap[name];
@@ -48,3 +47,6 @@ export const allSkills: SkillMap =
         combined[name] = getSkill(name);
         return combined;
     }, {});
+type myPersonaData = PersonaData & StringMap<string>;
+type mySkillData = SkillData & StringMap<string>;
+export {myPersonaData as PersonaData, mySkillData as SkillData};

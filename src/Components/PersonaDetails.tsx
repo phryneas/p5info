@@ -9,9 +9,9 @@ export interface Props {
 }
 
 export class PersonaDetails extends React.Component<NavigationScreenProps<Props>> {
-    static navigationOptions = {
-        title: 'Persona Details',
-    };
+    static navigationOptions = ({navigation: {state: {params: {persona}}}}: NavigationScreenProps<Props>) => ({
+        title: persona ? 'Persona Details: ' + persona.name : 'Persona Details',
+    });
 
     render() {
         const {persona} = this.props.navigation.state.params as Props;
@@ -102,8 +102,8 @@ export class PersonaDetails extends React.Component<NavigationScreenProps<Props>
                                 return (
                                     <View key={skillName} style={{flexDirection: 'column'}}>
                                         <View>
-                                            <Text>{skillName} ({skill.cost > 0 ? (
-                                                <Text>{skill.cost >= 100 ? skill.cost / 100 : skill.cost}{skill.cost >= 100 ? 'MP' : ('%HP')}</Text>) : (
+                                            <Text>{skillName} ({skill.cost || 0 > 0 ? (
+                                                <Text>{skill.cost || 0 >= 100 ? skill.cost || 0 / 100 : skill.cost}{skill.cost || 0 >= 100 ? 'MP' : ('%HP')}</Text>) : (
                                                 <Text>passive</Text>)})</Text>
                                         </View>
                                         <View>

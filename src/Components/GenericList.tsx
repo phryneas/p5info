@@ -25,12 +25,11 @@ export class GenericList<T> extends React.Component<Props<T> & NavigationScreenP
         });
 
         const {groupBy, sortBy, allItems} : Props<T> = this.props;
-        const sortFunc = (a: PersonaData, b: PersonaData) => (a[sortBy] || '') > (b[sortBy] || '') ? 1 : -1;
+        const sortFunc = (a: T, b: T) => (a[sortBy] || '') > (b[sortBy] || '') ? 1 : -1;
 
         if (groupBy) {
             let data: StringMap<T[]> = {};
             for (let item of Object.values(allItems)) {
-                console.log(item, groupBy);
                 (data[String(item[groupBy])] || (data[String(item[groupBy])] = [])).push(item);
             }
             for (let items of Object.values(data)) {
